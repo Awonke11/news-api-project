@@ -6,9 +6,9 @@ This is a project made with [Vite](https://vitejs.dev/guide/) and [React](https:
 - For the loader: [React Spinners](https://mhnpd.github.io/react-loader-spinner/)
 - For the Icons: [React Icons](https://react-icons.github.io/react-icons/)
 
-## How to get started
-- First you will an account with the [News API](https://newsapi.org/);
-- After getting the account, you need to first ```fork``` or ```clone``` this repo.
+## Getting started
+- First you will need an account with the [News API](https://newsapi.org/);
+- After getting the account, you need to ```fork``` or ```clone``` this repo.
 - After that, open your terminal on the project directory and run the following command:
 ```terminal
 npm install
@@ -22,13 +22,13 @@ yarn install
     VITE_REACT_APP_API_KEY=apiKey
     ```
   - In the place of the "apiKey", replace it with your API key.
-- Then to run the project and display it on your browser, you use the followind command:
+- Then to run the project and display it on your browser, you use the following command:
 ```terminal
 npm run dev
 or
 yarn run dev
 ```
-- This will open the local version of the website on http://localhost:5173/
+- This will open the local version of the website at http://localhost:5173/
 
 ## Contribute
 😊 If you have additional features that you would like to add, feel free to push to the ```master``` branch.
