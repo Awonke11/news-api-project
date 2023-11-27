@@ -32,3 +32,8 @@ yarn run dev
 
 ## Contribute
 😊 If you have additional features that you would like to add, feel free to push to the ```master``` branch.
+
+## Deploy
+- I recommend deploying your project with [Vercel](https://vercel.com/)
+- Make sure that your [News API](https://newsapi.org/) is not on **Developer plan** so that your application can fetch the news data during production otherwise, you will get an error during production.
+- I am on **Developer plan** hence I have not deployed this application, why? This project is for practice purposes.
