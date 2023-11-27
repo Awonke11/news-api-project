@@ -1,0 +1,8 @@
+{
+  "APP_NAME": "News",
+  "APP_ENV": "local",
+  "APP_DEBUG": true,
+  "APP_LOG_LEVEL": "debug",
+  "NEWS_API_URL": "https://newsapi.org/v2/everything",
+  "NEWS_API_KEY": "f7ae2b0556b9451f9985523271ceaa2a"
+}

@@ -1,0 +1,38 @@
+$grey-color: rgb(207, 207, 207);
+$darker-grey-color: rgb(143, 143, 143);
+
+.news {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    .newsEmpty {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $darker-grey-color;
+        gap: .5rem;
+
+        .newsEmptyIcon {
+            font-size: 1.4rem;
+        }
+
+        .newsEmptyText {
+            font-size: 1.2rem;
+            font-family: sans-serif;
+        }
+    }
+
+    .newsData {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    @media screen and (max-width: 480px) {
+        .newsData {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
