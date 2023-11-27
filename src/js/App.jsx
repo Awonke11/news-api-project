@@ -27,6 +27,7 @@ function App() {
         const returnData = await getNews.json();
         setNewsData(returnData?.articles);
         setDataFetchingProgress({errorMessage: "", isLoading: false})
+        console.log("Main:", returnData?.articles)
       } catch (e) {
         setDataFetchingProgress({...dataFetchingProgress, errorMessage: e.message})
       }
@@ -42,6 +43,7 @@ function App() {
         const searchedData = await fetch(`https://newsapi.org/v2/everything?q=${searchInput}&apiKey=${apiKey}&pageSize=10`);
         const returnedData = await searchedData.json();
         setNewsData(returnedData?.articles)
+        console.log("Search:", returnedData?.articles)
         setDataFetchingProgress({errorMessage: "", isLoading: false})
         setTopic(searchInput)
       } catch (e) {
