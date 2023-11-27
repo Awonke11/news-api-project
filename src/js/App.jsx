@@ -19,8 +19,8 @@ function App() {
   
   useEffect(() => {
     const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
+
     const newsAPIUrl = `https://newsapi.org/v2/everything?q=${topic}&apiKey=${apiKey}&pageSize=10`
-    console.log("Main API Key:", apiKey)
     const fetchNews = async () => {
       setDataFetchingProgress({...dataFetchingProgress, isLoading: true})
       try {
@@ -28,7 +28,6 @@ function App() {
         const returnData = await getNews.json();
         setNewsData(returnData?.articles);
         setDataFetchingProgress({errorMessage: "", isLoading: false})
-        console.log("Main:", returnData)
       } catch (e) {
         setDataFetchingProgress({...dataFetchingProgress, errorMessage: e.message})
       }
@@ -41,11 +40,10 @@ function App() {
     const searchNews = async (searchInput) => {
       try {
         const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
+        
         const searchedData = await fetch(`https://newsapi.org/v2/everything?q=${searchInput}&apiKey=${apiKey}&pageSize=10`);
-        console.log("Search API Key:", apiKey)
         const returnedData = await searchedData.json();
         setNewsData(returnedData?.articles)
-        console.log("Search:", returnedData)
         setDataFetchingProgress({errorMessage: "", isLoading: false})
         setTopic(searchInput)
       } catch (e) {
