@@ -14,7 +14,6 @@ function App() {
   });
   const [searchInput, setSearchInput] = useState("");
   const [newsData, setNewsData] = useState([]);
-  const [startSearch, setStartSearch] = useState(false);
   const [topic, setTopic] = useState("fashion")
   
   useEffect(() => {
@@ -24,8 +23,11 @@ function App() {
     const fetchNews = async () => {
       setDataFetchingProgress({...dataFetchingProgress, isLoading: true})
       try {
+        // Fetching the data
         const getNews = await fetch(newsAPIUrl);
         const returnData = await getNews.json();
+
+        // Updating the state
         setNewsData(returnData?.articles);
         setDataFetchingProgress({errorMessage: "", isLoading: false})
       } catch (e) {
@@ -36,33 +38,33 @@ function App() {
     fetchNews();
   }, [])
 
-  useEffect(() => {
+  const searchNewsData = async () => {
     const searchNews = async (searchInput) => {
       try {
         const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
-        
+
+        // Fetching the data
         const searchedData = await fetch(`https://newsapi.org/v2/everything?q=${searchInput}&apiKey=${apiKey}&pageSize=10`);
         const returnedData = await searchedData.json();
+
+        // Updating the state
         setNewsData(returnedData?.articles)
         setDataFetchingProgress({errorMessage: "", isLoading: false})
         setTopic(searchInput)
+        
       } catch (e) {
         setDataFetchingProgress({...dataFetchingProgress, errorMessage: e.message})
       }
     }
 
-    if (startSearch) {
-      if (searchInput.trim().length === 0) {
-        setDataFetchingProgress({...dataFetchingProgress, errorMessage: "Empty search input"})
-        setStartSearch(false)
-        setTopic("fashion")
-      } else {
-        setDataFetchingProgress({...dataFetchingProgress, isLoading: true})
-        searchNews(searchInput)
-        setStartSearch(false)
-      }
+    if (searchInput.trim().length === 0) {
+      setDataFetchingProgress({...dataFetchingProgress, errorMessage: "Empty search input"})
+      setTopic("fashion")
+    } else {
+      setDataFetchingProgress({...dataFetchingProgress, isLoading: true})
+      searchNews(searchInput)
     }
-  }, [startSearch])
+  }
 
   return (
     <div className="app">
@@ -75,7 +77,7 @@ function App() {
             <IoSearch className="appHeaderContentSearchIcon" />
             <input 
               type="search"
-              placeholder="Search for news"
+              placeholder="Search news using keyword (i.e 'coding')"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               className="appHeaderContentSearchInput"
@@ -83,7 +85,7 @@ function App() {
           </div>
           <div 
             className="appHeaderContentSubmit" 
-            onClick={() => setStartSearch(true)}>
+            onClick={searchNewsData}>
             <GrSend className="appHeaderContentSubmitIcon" />
             <span className="appHeaderContentSubmitText">Search</span>
           </div>

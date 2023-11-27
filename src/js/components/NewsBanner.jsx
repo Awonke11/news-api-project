@@ -1,8 +1,7 @@
 import "../../scss/components/banner.scss";
 import { useEffect, useState } from "react";
-import { FaRegNewspaper } from "react-icons/fa";
-import { FaLinkedin, FaInstagram } from "react-icons/fa";
 import { convertDateFormat } from "./utils";
+import { ThreeDots } from "react-loader-spinner";
 
 export default function NewsBanner({topic}) {
     const [showBanner, setShowBanner] = useState(false);
@@ -49,26 +48,19 @@ export default function NewsBanner({topic}) {
                         <span className="bannerContentDate">{convertDateFormat(bannerData?.publishedAt)}</span>
                     </div>
                 </section> :
-                <section className="bannerEmpty">
-                    <FaRegNewspaper className="bannerEmptyIcon" />
-                    <h2 className="bannerEmptyTitle">News headlines</h2>
-                    <p className="bannerEmptyText">Get your lastest news headlines from the best news website. Follows us on every platform to stay up to date with the current trends and news updates.S</p>
-                    <div className="bannerEmptyLinks">
-                        <a
-                            href="https://www.linkedin.com/in/ajmnotoza/"
-                            target="_blank"
-                            className="bannerEmptyLinksIcon"
-                        >
-                            <FaLinkedin />
-                        </a>
-                        <a
-                            href="https://www.instagram.com/aj_mnotoza/"
-                            target="_blank"
-                            className="bannerEmptyLinksIcon"
-                        >
-                            <FaInstagram />
-                        </a>
+                <section className="bannerLoader">
+                    <div className="bannerLoaderImage"></div>
+                    <div className="bannerLoaderDisplay">
+                    <ThreeDots 
+                        height="50" 
+                        width="50" 
+                        radius="5"
+                        color="#000000"
+                        visible={true}
+                    />
                     </div>
+                    <div className="bannerLoaderText">Get your lastest news headlines from the best news website. Follows us on every platform to stay up to date with the current trends and news updates.S</div>
+                    <span className="bannerLoaderButton">Read more</span>
                 </section>
             }
         

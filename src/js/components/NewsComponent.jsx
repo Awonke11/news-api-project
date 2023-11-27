@@ -4,12 +4,16 @@ import { convertDateFormat } from "./utils";
 export default function NewsComponent({data}) {
     return (
         <div className="newsComp">
-            <div
-                className="newsCompImage"
-                style={{
-                    backgroundImage: `url(${data?.urlToImage})`
-                }}
-            ></div>
+            {
+                (data?.urlToImage === "" || data?.urlToImage?.length === 0) ?
+                <div className="newsCompImageLoader"></div> :
+                <div
+                    className="newsCompImage"
+                    style={{
+                        backgroundImage: `url(${data?.urlToImage})`
+                    }}
+                ></div>
+            }
             <div className="newsCompContent">
                 <span className="newsCompContentTopic">TOPIC</span>
                 <h1 className="newsCompContentTile">{data?.title}</h1>
