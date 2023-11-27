@@ -28,7 +28,7 @@ function App() {
         const returnData = await getNews.json();
         setNewsData(returnData?.articles);
         setDataFetchingProgress({errorMessage: "", isLoading: false})
-        console.log("Main:", returnData?.articles)
+        console.log("Main:", returnData)
       } catch (e) {
         setDataFetchingProgress({...dataFetchingProgress, errorMessage: e.message})
       }
@@ -45,7 +45,7 @@ function App() {
         console.log("Search API Key:", apiKey)
         const returnedData = await searchedData.json();
         setNewsData(returnedData?.articles)
-        console.log("Search:", returnedData?.articles)
+        console.log("Search:", returnedData)
         setDataFetchingProgress({errorMessage: "", isLoading: false})
         setTopic(searchInput)
       } catch (e) {
